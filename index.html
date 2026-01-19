@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Words for Floria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="constellation"></canvas>
+    
+    <div class="container">
+        <div class="day-counter">Day <span id="dayNumber">1</span></div>
+        <div class="intro-text">Floria, today you are:</div>
+        
+        <div class="word-container">
+            <h1 class="main-word" id="mainWord"></h1>
+            <p class="translation" id="translation"></p>
+        </div>
+
+        <div class="buttons-container">
+            <button class="heart-button" id="heartButton" onclick="toggleFavorite()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </button>
+
+            <button class="favorites-toggle" onclick="toggleFavorites()">
+                Favorites (<span id="favCount">0</span>)
+            </button>
+        </div>
+    </div>
+
+    <div class="favorites-panel" id="favoritesPanel">
+        <div class="favorites-header">
+            <h2>Your Favorites</h2>
+            <button onclick="toggleFavorites()">×</button>
+        </div>
+        <div class="favorites-list" id="favoritesList"></div>
+    </div>
+
+    <div class="definition-modal" id="definitionModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeDefinition()">×</button>
+            <h3 id="modalWord"></h3>
+            <div id="modalDefinition">Loading...</div>
+        </div>
+    </div>
+
+    <div class="special-message" id="specialMessage">
+        <div class="message-content">
+            <h2 id="specialTitle"></h2>
+            <p id="specialText"></p>
+            <button onclick="closeSpecialMessage()">Close</button>
+        </div>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

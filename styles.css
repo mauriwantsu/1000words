@@ -1,0 +1,421 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0a;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#constellation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.day-counter {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    color: #555;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.intro-text {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.word-container {
+    margin-bottom: 4rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.word-container:hover {
+    transform: scale(1.03);
+}
+
+.main-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    opacity: 0;  /* Empieza invisible */
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes typeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.translation {
+    font-size: 1.2rem;
+    color: #777;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.heart-button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid #444;
+    color: #888;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-button:hover {
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.heart-button.active {
+    border-color: #fff;
+    background: #fff;
+    color: #0a0a0a;
+}
+
+.favorites-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid #444;
+    color: #888;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.favorites-toggle:hover {
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.favorites-panel {
+    position: fixed;
+    right: -450px;
+    top: 0;
+    width: 450px;
+    height: 100vh;
+    background: #111;
+    border-left: 1px solid #222;
+    z-index: 100;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+}
+
+.favorites-panel.active {
+    right: 0;
+}
+
+.favorites-header {
+    padding: 2rem;
+    border-bottom: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.favorites-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 400;
+}
+
+.favorites-header button {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.favorites-header button:hover {
+    color: #fff;
+}
+
+.favorites-list {
+    padding: 2rem;
+}
+
+.favorite-item {
+    padding: 1.5rem;
+    border-bottom: 1px solid #1a1a1a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.favorite-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+    padding-left: 2rem;
+}
+
+.favorite-item .word {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 0.3rem;
+}
+
+.favorite-item .translation {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.favorite-item .day {
+    font-size: 0.75rem;
+    color: #444;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.definition-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.94);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    backdrop-filter: blur(8px);
+    animation: fadeInModal 0.3s ease;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.definition-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 650px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: slideUpModal 0.4s ease;
+}
+
+@keyframes slideUpModal {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #0a0a0a;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    color: #888;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+#modalWord {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    padding-right: 3rem;
+    line-height: 1.2;
+}
+
+#modalDefinition {
+    color: #ccc;
+    line-height: 1.9;
+    font-size: 1.05rem;
+}
+
+#modalDefinition strong {
+    color: #fff;
+    font-weight: 500;
+}
+
+.special-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 300;
+    backdrop-filter: blur(8px);
+}
+
+.special-message.active {
+    display: flex;
+}
+
+.message-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 2px solid #fff;
+    border-radius: 15px;
+    padding: 4rem;
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+}
+
+.message-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.message-content p {
+    font-size: 1.2rem;
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.message-content button {
+    background: #fff;
+    border: none;
+    color: #0a0a0a;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.message-content button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .main-word {
+        font-size: 3rem;
+    }
+    
+    .buttons-container {
+        gap: 1.5rem;
+    }
+    
+    .favorites-panel {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .modal-content, .message-content {
+        padding: 2rem;
+    }
+}
