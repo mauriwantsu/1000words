@@ -1,5 +1,5 @@
  // Configuración
-const START_DATE = new Date('2026-01-21T00:00:00-05:00'); // 21 de enero 2026, Panamá timezone
+const START_DATE = new Date('2026-01-20T00:00:00-05:00'); // 21 de enero 2026, Panamá timezone
 
 // Días especiales
 const SPECIAL_DAYS = {
