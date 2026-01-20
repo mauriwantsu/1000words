@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 exports.handler = async function(event, context) {
     const BREVO_API_KEY = process.env.BREVO_API_KEY;
-    const FLORIA_EMAIL = 'classgaming97@gmail.com';
+    const FLORIA_EMAIL = 'floriatosca.kerekes@gmail.com';
     
     const START_DATE = new Date('2026-01-21T00:00:00-05:00');
     const now = new Date();
