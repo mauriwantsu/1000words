@@ -3,6 +3,10 @@ const START_DATE = new Date('2026-01-20T00:00:00-05:00'); // 21 de enero 2026, P
 
 // Días especiales
 const SPECIAL_DAYS = {
+    25: {
+        title: "Happy Valentine's Day, My Love",
+        message: "There are 1,000 words waiting for you here. One for each day and I want you to wake up knowing you are my world.\n\nToday, on this day that belongs to love, I don't need a word.\n\nI need you to know something.\n\nI think about the way you laugh when something genuinely surprises you. The way your mind works — fast, curious, always three steps ahead. The way you move through the world with this quiet confidence that makes everyone around you feel like they're exactly where they're supposed to be. That's how you make me feel.\n\nI think about these things at 4am when the restaurant is finally quiet and the city outside sounds like it's exhaling. I think about them in the small breaks between studying — and somehow, thinking of you makes even the hardest days feel like they're easy.\n\nYou might be far away right now. Oceans and timezones and thousands of miles of sky between us. And still — you are the first thing I think of when something good happens. You are who I want to call when something breaks. You are the person I'm building toward every day.\n\nI don't know exactly what our future looks like yet. But I know you're in it. Clearly. Completely. Without question.\n\nSo today, while the world celebrates love with flowers and dinners and grand gestures — I just want to say this, simply:\n\nI love you.\n\nI miss you in a way that has no good word for it in any language.\n\nAnd I am waiting for the day when the distance is just a story we tell.\n\nUntil then — there's a new word for you every morning. Because some things are worth saying 1,000 times.\n\nCon todo mi amor,\nMauricio"
+   
     34: { // 24 de febrero - Cumpleaños de Floria
         title: "Happy Birthday, My Love ✨",
         message: "Today is your special day, and I want you to know that you are the most incredible gift in my life. Every moment with you is a celebration. Te amo con todo mi corazón. 🎂💖"
